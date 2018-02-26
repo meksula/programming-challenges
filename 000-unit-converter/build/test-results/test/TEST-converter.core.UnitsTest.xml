@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="converter.core.UnitsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-02-26T19:21:07" hostname="karol-ubuntu" time="0.013">
+  <properties/>
+  <testcase name="shouldCreateCorrectlyQuery" classname="converter.core.UnitsTest" time="0.013"/>
+  <system-out><![CDATA[Nie możesz przekonwertować jednostek różnych typów!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

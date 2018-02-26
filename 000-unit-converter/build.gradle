@@ -1,0 +1,23 @@
+group 'com.unit_converter'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'javax.measure', name: 'unit-api', version: '1.0'
+    compile files('lib/unit-ri-1.0.3.jar')
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'converter.Main'
+    }
+}
