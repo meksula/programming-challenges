@@ -1,0 +1,9 @@
+.background {
+    -fx-background-color: black;
+}
+
+.pane {
+    -fx-border-color: white;
+    -fx-border-width: 6px;
+    -fx-background-color: #cdf5f9;
+}

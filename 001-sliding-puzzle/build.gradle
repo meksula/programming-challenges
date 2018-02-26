@@ -1,0 +1,21 @@
+group '001-sliding-puzzle'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile files('libs/JUnitParams-1.1.1.jar')
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'puzzle.Run'
+    }
+}
