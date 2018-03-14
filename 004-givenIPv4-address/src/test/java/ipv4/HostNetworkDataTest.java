@@ -66,7 +66,25 @@ public class HostNetworkDataTest {
     @Test
     public void sutShouldGiveBroadcastAddress() throws IOException {
         String broadcast = hostNetworkData.giveBroadcastAddress();
-        logger.info(broadcast);
+        logger.info("Broadcast address: " + broadcast);
     }
 
+    @Test
+    public void expressionToBinaryShouldConvertCorrectly() throws IOException {
+        String splited = hostNetworkData.expressionToBinary(hostNetworkData.giveIPv4address());
+        logger.info("Binary IPv4 address: " + splited);
+        assertTrue(splited.length() == 24);
+    }
+
+    @Test
+    public void giveNetworkAddressShouldGiveCorrectly() throws IOException {
+        hostNetworkData.giveNetworkAddress();
+    }
+
+    @Test
+    public void andShouldConvertCorrectly() throws IOException {
+        String binary1 = hostNetworkData.expressionToBinary(hostNetworkData.giveIPv4address());
+        String binary2 = hostNetworkData.subnetMaskToBinary();
+        hostNetworkData.and(binary1, binary2);
+    }
 }

@@ -80,9 +80,10 @@ public class HostNetworkData {
                 stringBuilder.append("1");
         }
 
-        String afterNot = stringBuilder.toString();
+        String afterNot = stringBuilder.toString(); //binarna postać reszty z maski
 
         int [] appends = subnetMaskToDecimal(afterNot);
+
 
         //TODO 1. Wyznacz adres sieci: ip i maska na postać binarną i później AND()
         //TODO 2. Adres sieci + appends == broadcast address
@@ -90,8 +91,39 @@ public class HostNetworkData {
         return "";
     }
 
+    public String giveNetworkAddress() throws IOException {
+        String iPv4addressBinary = expressionToBinary(giveIPv4address());
 
-    private String subnetMaskToBinary() {
+        String subnetMaskBinary = subnetMaskToBinary();
+
+        //TODO AND()
+
+
+        String networkAddress = null;
+
+        return networkAddress;
+    }
+
+    protected String expressionToBinary(String expression) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        String [] splited = expression.split("\\.");
+
+        for (int i = 0; i < splited.length; i++) {
+            int decimal = Integer.parseInt(splited[i]);
+            stringBuilder.append(Integer.toBinaryString(decimal));
+        }
+
+        return stringBuilder.toString();
+    }
+
+    protected String and(String binary1, String binary2) {
+        System.out.println(binary1);
+        System.out.println(binary2);
+        return null;
+    }
+
+    protected String subnetMaskToBinary() {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < subnetMask; i++) {
             builder.append("1");
@@ -105,7 +137,7 @@ public class HostNetworkData {
             builder.append("0");
         }
 
-        return binarySubnetMask = builder.toString();
+        return builder.toString();
     }
 
     private int [] subnetMaskToDecimal(String binarySubnetMask) {
