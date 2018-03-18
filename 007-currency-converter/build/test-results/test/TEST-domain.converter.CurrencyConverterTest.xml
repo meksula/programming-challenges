@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="domain.converter.CurrencyConverterTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-03-18T22:47:30" hostname="karol-ubuntu" time="0.721">
+  <properties/>
+  <testcase name="instanceComponentsShouldBeInitialized" classname="domain.converter.CurrencyConverterTest" time="0.437"/>
+  <testcase name="afterInvokeConstructorMapShouldBeInitialized" classname="domain.converter.CurrencyConverterTest" time="0.284"/>
+  <system-out><![CDATA[
+100,00 UAH equals 3,77 USD
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

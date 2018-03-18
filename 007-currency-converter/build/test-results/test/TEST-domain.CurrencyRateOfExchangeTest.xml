@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="domain.CurrencyRateOfExchangeTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2018-03-18T22:47:31" hostname="karol-ubuntu" time="2.21">
+  <properties/>
+  <testcase name="parseStringToDoubleTest" classname="domain.CurrencyRateOfExchangeTest" time="0.0"/>
+  <testcase name="extractValuesTest" classname="domain.CurrencyRateOfExchangeTest" time="0.008"/>
+  <testcase name="shouldGetMapWithCurrencyAndValue" classname="domain.CurrencyRateOfExchangeTest" time="0.004"/>
+  <testcase name="assignValuesWorksCorrectlyAndMapIsFilled" classname="domain.CurrencyRateOfExchangeTest" time="0.026"/>
+  <testcase name="shouldBeAbleToLoadNewDocumentFromUrlAddress" classname="domain.CurrencyRateOfExchangeTest" time="0.569"/>
+  <testcase name="parseDocumentShouldReturnCollectionOfString" classname="domain.CurrencyRateOfExchangeTest" time="0.004"/>
+  <testcase name="getValueFromMap" classname="domain.CurrencyRateOfExchangeTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[log4j:WARN No appenders could be found for logger (domain.CurrencyRateOfExchangeTest).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+]]></system-err>
+</testsuite>

@@ -1,15 +1,27 @@
 package domain;
 
+import domain.data.CurrencyIndex;
+import domain.data.CurrencyRateOfExchange;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.text.ParseException;
+import java.util.List;
 import java.util.Map;
+
 
 import static org.junit.Assert.*;
 
+/**
+ * @Author Karol Meksuła
+ * 17-03-2018
+ * */
+
 public class CurrencyRateOfExchangeTest {
+    private final Logger logger = LogManager.getLogger(CurrencyRateOfExchangeTest.class);
     private CurrencyRateOfExchange currencyRateOfExchange = new CurrencyRateOfExchange();
     private final String URL_ADDRESS = "https://pl.wikipedia.org/wiki/Winston_Churchill";
 
@@ -23,9 +35,9 @@ public class CurrencyRateOfExchangeTest {
     }
 
     @Test
-    public void shouldGetMapWithCurrencyAndValue() {
-        Map<String, BigDecimal> curencies = currencyRateOfExchange.getCurrenciesValuesMap();
-        assertEquals(0, curencies.size());
+    public void shouldGetMapWithCurrencyAndValue() throws ParseException {
+        Map<CurrencyIndex, Double> curencies = currencyRateOfExchange.getCurrenciesValuesMap();
+        assertEquals(7, curencies.size());
     }
 
     @Test
@@ -36,7 +48,31 @@ public class CurrencyRateOfExchangeTest {
     }
 
     @Test
-    public void extractCurrencyNameAndValueFromString() {
-        assertEquals(5, currencyRateOfExchange.getCurrenciesValuesMap().size());
+    public void assignValuesWorksCorrectlyAndMapIsFilled() throws ParseException {
+        currencyRateOfExchange.assignKeyAndValue();
+        Map<CurrencyIndex, Double> map = currencyRateOfExchange.getCurrenciesValuesMap();
+        assertEquals(7, map.size());
+        logger.info(map.get(CurrencyIndex.UAH));
+    }
+
+    private final double DELTA = 1e-15;
+
+    @Test
+    public void parseStringToDoubleTest() throws ParseException {
+        String toParse = "4,563";
+        double value = currencyRateOfExchange.parseStringToDouble(toParse);
+        assertEquals(4.563, value, DELTA);
+    }
+
+    @Test
+    public void extractValuesTest() throws ParseException {
+        List<Double> values =  currencyRateOfExchange.extractValue();
+        assertEquals(34, values.size());
+    }
+
+    @Test
+    public void getValueFromMap() throws ParseException {
+        final double USD_RATE = currencyRateOfExchange.getCurrenciesValuesMap().get(CurrencyIndex.USD);
+        logger.info(USD_RATE);
     }
 }

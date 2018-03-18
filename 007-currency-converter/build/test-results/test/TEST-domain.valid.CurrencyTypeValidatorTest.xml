@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="domain.valid.CurrencyTypeValidatorTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2018-03-18T22:47:30" hostname="karol-ubuntu" time="0.002">
+  <properties/>
+  <testcase name="ctvShouldAllowGoNextOrNot" classname="domain.valid.CurrencyTypeValidatorTest" time="0.001"/>
+  <testcase name="checkVariablesTestAllow" classname="domain.valid.CurrencyTypeValidatorTest" time="0.0"/>
+  <testcase name="ifTwoArgumentsEqualsShouldNotAllow" classname="domain.valid.CurrencyTypeValidatorTest" time="0.0"/>
+  <testcase name="currencyNotExist" classname="domain.valid.CurrencyTypeValidatorTest" time="0.001"/>
+  <testcase name="shouldNotAllow" classname="domain.valid.CurrencyTypeValidatorTest" time="0.0"/>
+  <testcase name="currencyShouldExist" classname="domain.valid.CurrencyTypeValidatorTest" time="0.0"/>
+  <system-out><![CDATA[Wrong argument! There is no such currency!
+Wrong argument! There is no such currency!
+Wrong argument! There is no such currency!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
