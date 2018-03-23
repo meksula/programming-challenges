@@ -3,8 +3,20 @@ package polygons.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.input.DragEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Shape;
+import polygons.domain.generator.PolygonGenerator;
+import polygons.domain.mutator.PolygonMutator;
+import polygons.domain.generator.ShapeGenerator;
+import polygons.domain.mutator.ShapeMutable;
+import polygons.domain.shapes.Shapes;
+
+import java.text.NumberFormat;
+import java.util.List;
 
 /**
  * @Author
@@ -15,52 +27,38 @@ import javafx.scene.layout.Pane;
 public class MainController {
 
     @FXML
-    private TextField pointsAmount;
+    private Button executeButton;
 
     @FXML
-    private TextField sideLength;
+    private MenuItem equiventalTriangle, square, rectangle;
 
     @FXML
-    private Button scalePlusButton;
-
-    @FXML
-    private Button scaleMinusButton;
-
-    @FXML
-    private Button rotatePlusButton;
-
-    @FXML
-    private Button rotateMinusButton;
-
-    @FXML
-    private Button generateButton;
+    private Slider rotateSlide, scaleSlide;
 
     @FXML
     private Pane drawingArea;
 
-    @FXML
-    void generateNewPolygon(ActionEvent event) {
-
-    }
+    private ShapeGenerator polygonGenerator = PolygonGenerator.getInstance();
+    private ShapeMutable shapeMutable = PolygonMutator.getInstance();
 
     @FXML
-    void rotateMinus(ActionEvent event) {
-
+    public void chooseShapeType(ActionEvent actionEvent) {
+        clear();
+        Shape shape = polygonGenerator.generateShape(actionEvent);
+        draw(shape);
+        shapeMutable.setShape(shape);
     }
 
-    @FXML
-    void rotatePlus(ActionEvent event) {
-
+    private void draw(Shape shape) {
+        drawingArea.getChildren().add(shape);
     }
 
-    @FXML
-    void scaleMinus(ActionEvent event) {
-
+    private void clear() {
+        drawingArea.getChildren().clear();
     }
 
-    @FXML
-    void scalePlus(ActionEvent event) {
-
+    public void mutate(ActionEvent actionEvent) {
+        double rotate = Math.round(rotateSlide.getValue());
+        double scale = Math.round(scaleSlide.getValue());
     }
-
 }
