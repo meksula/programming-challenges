@@ -1,7 +1,5 @@
 package polygons.domain.shapes;
 
-import javafx.scene.shape.Polygon;
-
 /**
  * @Author
  * Karol Meksuła
@@ -9,34 +7,28 @@ import javafx.scene.shape.Polygon;
  * */
 
 public enum Shapes {
-    EQUIVENTALTRIANGLE(8) {
+    EQUIVENTALTRIANGLE {
         @Override
-        public Polygon create() {
+        public AvailableShapes createOne() {
             return new EquivalentTriangle();
         }
     },
-    SQUARE(10) {
+    SQUARE {
         @Override
-        public Polygon create() {
+        public AvailableShapes createOne() {
             return new Square();
         }
     },
 
-    RECTANGLE(10) {
+    RECTANGLE {
         @Override
-        public Polygon create() {
-            return new polygons.domain.shapes.Rectangle();
+        public AvailableShapes createOne() {
+            return new Rectangle();
         }
     };
 
     public int doubles;
 
-    Shapes(int doubles) {
-        this.doubles = doubles;
-    }
-
-    public Polygon create() {
-        return new Polygon();
-    }
+    public abstract AvailableShapes createOne();
 
 }

@@ -1,7 +1,7 @@
 package polygons.domain.generator;
 
 import javafx.event.ActionEvent;
-import javafx.scene.shape.Shape;
+import polygons.domain.shapes.AvailableShapes;
 
 /**
  * @Author
@@ -10,5 +10,5 @@ import javafx.scene.shape.Shape;
  * */
 
 public interface ShapeGenerator {
-    Shape generateShape(ActionEvent actionEvent);
+    AvailableShapes generateShape(ActionEvent actionEvent);
 }

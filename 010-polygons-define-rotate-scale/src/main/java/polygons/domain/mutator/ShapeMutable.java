@@ -1,5 +1,6 @@
 package polygons.domain.mutator;
 
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
 
 import java.util.List;
@@ -13,11 +14,7 @@ import java.util.List;
 public interface ShapeMutable {
     void setShape(Shape shape);
 
-    List<Double> rotateLeft();
+    Shape scale(double factor);
 
-    void rotateRight();
-
-    void scaleMinus();
-
-    void scalePlus();
+    void rotate(double factor);
 }

@@ -16,7 +16,7 @@
       <Label layoutX="756.0" layoutY="389.0" text="Scale" />
       <Pane fx:id="drawingArea" layoutX="14.0" layoutY="14.0" prefHeight="487.0" prefWidth="655.0" />
       <Slider fx:id="rotateSlide" layoutX="704.0" layoutY="364.0" max="360.0" />
-      <Slider fx:id="scaleSlide" layoutX="704.0" layoutY="405.0" max="360.0" />
+      <Slider fx:id="scaleSlide" layoutX="704.0" layoutY="405.0" min="-100.0" />
       <Label layoutX="728.0" layoutY="18.0" text="Choose shape" />
       <MenuButton layoutX="729.0" layoutY="34.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" text="Shape">
         <items>

@@ -2,10 +2,7 @@ package polygons.domain.mutator;
 
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
-import polygons.domain.generator.PolygonGenerator;
-
-import java.util.ArrayList;
-import java.util.List;
+import polygons.domain.shapes.AvailableShapes;
 
 /**
  * @Author
@@ -23,6 +20,11 @@ public class PolygonMutator implements ShapeMutable {
     private PolygonMutator() {}
 
     private Polygon shape;
+    private AvailableShapes availableShapes;
+
+    public void setAvailableShapes(AvailableShapes availableShapes) {
+        this.availableShapes = availableShapes;
+    }
 
     @Override
     public void setShape(Shape shape) {
@@ -30,30 +32,15 @@ public class PolygonMutator implements ShapeMutable {
     }
 
     @Override
-    public List<Double> rotateLeft() {
-        List<Double> points = shape.getPoints();
-        List<Double> newPoints = new ArrayList<>();
-
-        for (Double d : points) {
-           d = d + 5;
-           newPoints.add(d);
-        }
-
-        return newPoints;
+    public Shape scale(double factor) {
+        Shape shape = availableShapes.scale(factor);
+        this.shape = (Polygon) shape;
+        return shape;
     }
 
     @Override
-    public void rotateRight() {
-
+    public void rotate(double factor) {
+        shape.setRotate(factor);
     }
 
-    @Override
-    public void scaleMinus() {
-
-    }
-
-    @Override
-    public void scalePlus() {
-
-    }
 }

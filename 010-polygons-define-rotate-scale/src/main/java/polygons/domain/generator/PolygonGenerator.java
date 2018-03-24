@@ -1,11 +1,8 @@
 package polygons.domain.generator;
 
 import javafx.event.ActionEvent;
-import javafx.scene.shape.Shape;
-import polygons.domain.shapes.AvailableShape;
 import polygons.domain.shapes.Shapes;
-import polygons.domain.shapes.polymorphism.AvailableShapes;
-import polygons.domain.shapes.polymorphism.Octagon;
+import polygons.domain.shapes.AvailableShapes;
 
 /**
  * @Author
@@ -24,13 +21,10 @@ public class PolygonGenerator implements ShapeGenerator {
     }
 
     @Override
-    public Shape generateShape(ActionEvent actionEvent) {
-        /*String name = ShapeTypeExtracter.extract(actionEvent);
-        AvailableShape polygon = (AvailableShape) Shapes.valueOf(name).create();
-        return polygon.getPolygon();*/
-
-        Octagon shape = new Octagon();
-        return shape.createPolygon();
+    public AvailableShapes generateShape(ActionEvent actionEvent) {
+        String name = ShapeTypeExtracter.extract(actionEvent);
+        AvailableShapes polygon = Shapes.valueOf(name).createOne();
+        return polygon;
     }
 
 }

@@ -5,18 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
-import javafx.scene.input.DragEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 import polygons.domain.generator.PolygonGenerator;
 import polygons.domain.mutator.PolygonMutator;
 import polygons.domain.generator.ShapeGenerator;
-import polygons.domain.mutator.ShapeMutable;
-import polygons.domain.shapes.Shapes;
-
-import java.text.NumberFormat;
-import java.util.List;
+import polygons.domain.shapes.AvailableShapes;
 
 /**
  * @Author
@@ -39,26 +33,40 @@ public class MainController {
     private Pane drawingArea;
 
     private ShapeGenerator polygonGenerator = PolygonGenerator.getInstance();
-    private ShapeMutable shapeMutable = PolygonMutator.getInstance();
+    private PolygonMutator shapeMutable = PolygonMutator.getInstance();
+
+    public void initialize() {
+        rotateSlide.setOnDragDetected(event -> {
+            shapeMutable.rotate(rotateSlide.getValue());
+        });
+    }
 
     @FXML
     public void chooseShapeType(ActionEvent actionEvent) {
-        clear();
-        Shape shape = polygonGenerator.generateShape(actionEvent);
+        AvailableShapes availableShapes = polygonGenerator.generateShape(actionEvent);
+        Shape shape = availableShapes.createPolygon();
         draw(shape);
-        shapeMutable.setShape(shape);
+        shapeMutable.setAvailableShapes(availableShapes);
+    }
+
+    @FXML
+    public void mutate(ActionEvent actionEvent) {
+        Shape shape = shapeMutable.scale(dataFromSliders());
+        draw(shape);
     }
 
     private void draw(Shape shape) {
+        clear();
         drawingArea.getChildren().add(shape);
+        shapeMutable.setShape(shape);
     }
 
     private void clear() {
         drawingArea.getChildren().clear();
     }
 
-    public void mutate(ActionEvent actionEvent) {
-        double rotate = Math.round(rotateSlide.getValue());
-        double scale = Math.round(scaleSlide.getValue());
+    private double dataFromSliders() {
+        return Math.round(scaleSlide.getValue());
     }
+
 }
