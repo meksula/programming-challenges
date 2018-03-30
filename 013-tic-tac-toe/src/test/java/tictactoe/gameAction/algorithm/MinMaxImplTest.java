@@ -1,4 +1,4 @@
-package tictactoe.algorithm;
+package tictactoe.gameAction.algorithm;
 
 import org.junit.Test;
 
