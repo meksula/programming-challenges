@@ -2,6 +2,7 @@ package tictactoe.gameAction;
 
 import javafx.scene.control.Button;
 import tictactoe.controller.Controller;
+import tictactoe.gameAction.algorithm.EvaluationFunction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,10 @@ public class GameAction {
         return ourInstance;
     }
 
+    private EvaluationFunction evaluationFunction;
+
     private GameAction() {
+
     }
 
     private boolean gameIsOn;
@@ -40,6 +44,7 @@ public class GameAction {
 
     public void setGameBoard(Button[] gameBoard) {
         this.gameBoard = gameBoard;
+        this.evaluationFunction = new EvaluationFunction(gameBoard, PLAYER_X, CPU_O);
     }
 
     public void setController(Controller controller) {
@@ -47,6 +52,7 @@ public class GameAction {
     }
 
     public void changeQueue() {
+        evaluationFunction.evaluate();
         if (gameIsOn) {
             if (moveNow == PLAYER_X) {
                 moveNow = CPU_O;
@@ -107,7 +113,7 @@ public class GameAction {
         return ints;
     }
 
-    private void gameOver() {
+    public void gameOver() {
         gameIsOn = false;
         controller.gameOver();
     }

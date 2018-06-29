@@ -3,24 +3,23 @@ package tictactoe.gameAction.algorithm;
 import javafx.scene.control.Button;
 import tictactoe.gameAction.GameAction;
 
-
 /**
  * @Author
  * Karol Meksuła
  * 29-03-2018
  * */
 
-public class MinMaxImpl {
+public class MinMax {
 
     private GameAction gameAction = GameAction.getInstance();
     private Button[] gameBoard = gameAction.getGameBoard();
     private char PLAYER_X = gameAction.PLAYER_X;
     private char CPU_O = gameAction.CPU_O;
 
-    public int evaluationFunction() {
+    /*public int evaluationFunction() {
         for (int row = 0; row < 3; row++) {
             if (gameBoard[row][0] == gameBoard[row][1] &&
-                    gameBoard[row][1] == gameBoard[row][2]) {
+                   gameBoard[row][1] == gameBoard[row][2]) {
                 if (gameBoard[row][0] == PLAYER_X)
                     return +10;
                 else if (gameBoard[row][0] == PLAYER_O)
@@ -54,5 +53,5 @@ public class MinMaxImpl {
         }
 
         return 0;
-    }
+    }*/
 }

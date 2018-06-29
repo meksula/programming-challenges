@@ -10,8 +10,8 @@ import static org.junit.Assert.*;
  * 29-03-2018
  * */
 
-public class MinMaxImplTest {
-    private MinMaxImpl minMax = new MinMaxImpl();
+public class MinMaxTest {
+    private MinMax minMax = new MinMax();
 
     @Test
     public void shouldHave2Players() {

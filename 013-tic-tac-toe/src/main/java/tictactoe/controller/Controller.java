@@ -1,5 +1,6 @@
 package tictactoe.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,6 +16,7 @@ import tictactoe.gameAction.GameAction;
 
 public class Controller {
 
+    public Button reset;
     @FXML
     private Pane board;
 
@@ -41,5 +43,13 @@ public class Controller {
     public void gameOver() {
         board.setDisable(true);
         moveIndicator. setText("GAME OVER!");
+    }
+
+    public void resetGame(ActionEvent actionEvent) {
+        board.setDisable(false);
+        board.getChildren().clear();
+        initialize();
+
+
     }
 }
