@@ -1,6 +1,5 @@
 package controller;
 
-import com.sun.javafx.scene.traversal.Direction;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.Background;
@@ -8,17 +7,8 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import model.Ball;
-import model.Court;
-import model.Mover;
-import model.MoverDefault;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import model.*;
 
 /**
  * @Author
@@ -32,7 +22,7 @@ public class BoardController {
     private Pane pane;
     private Ball ball;
     private Court court;
-    //private boolean gameOn;
+    private Rocket rocket;
     private final double BOARD_HEIGHT = 500;
     private final double BOARD_WIDTH = 1000;
     private Mover mover;
@@ -42,7 +32,7 @@ public class BoardController {
     }
 
     public void initialize() {
-        this.mover = new MoverDefault();
+        this.mover = new MoverDefault(pane);
         this.pane = new Pane();
         pane.setMinHeight(BOARD_HEIGHT);
         pane.setMinWidth(BOARD_WIDTH);
@@ -59,11 +49,27 @@ public class BoardController {
 
         this.court = new Court();
         this.ball = new Ball(court.getCourt().getLayoutX(), court.getCourt().getLayoutY());
+        this.rocket = new Rocket(court.getCourt().getLayoutX(), court.getCourt().getLayoutY());
+        rocketMoveable();
 
         pane.getChildren().add(ball.getBall());
         pane.getChildren().add(court.getCourt());
+        pane.getChildren().add(rocket.getRocket());
 
-        mover.moveBallAtCourt(court, ball);
+        mover.moveBallAtCourt(court, rocket, ball);
+    }
+
+    private double lastMouseMove = 0;
+
+    private void rocketMoveable() {
+        pane.setOnMouseMoved(move -> {
+            lastMouseMove = move.getY();
+
+            if (lastMouseMove > 30 && lastMouseMove < 360) {
+                rocket.getRocket().setLayoutY(lastMouseMove);
+            }
+
+        });
     }
 
 }

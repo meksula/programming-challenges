@@ -16,8 +16,8 @@ public class Ball {
         this.ball = new Circle();
         ball.setRadius(5);
         ball.setFill(Paint.valueOf("white"));
-        ball.setCenterX(x);
-        ball.setCenterY(y);
+        ball.setCenterX(x + 50);
+        ball.setCenterY(y + 50);
     }
 
     public Circle getBall() {

@@ -7,5 +7,5 @@ package model;
  * */
 
 public interface Mover {
-    void moveBallAtCourt(Court court, Ball ball);
+    void moveBallAtCourt(Court court, Rocket rocket, Ball ball);
 }
