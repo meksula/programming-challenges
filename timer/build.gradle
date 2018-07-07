@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group '056-pong'
+group 'timer'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -17,6 +17,6 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'main/Main.class'
+        attributes 'Main-Class': 'com.meksula.Main'
     }
 }
